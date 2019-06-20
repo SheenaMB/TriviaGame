@@ -18,37 +18,48 @@
 //if no answer selected, then display that number as Unanswered. 
 //want to store questions 
 
-// $("#start-button").on("click", start);
-
-// setTimeout(timeUp, 1000 * 30);
-
-
-// function start() {
-
-//     var timer = $("#questions-page").html("00:30");
-//     console.log(timer);
-//     //  TODO: Use setInterval to start the count here and set the clock to running.
-//     if (!clockRunning) {
-//       intervalId = setInterval(count, 1000);
-//       clockRunning = true;
-//     }  
-//   }
+// var timer = $("#questions-page").html("00:30");
+// console.log(timer);
+// //  TODO: Use setInterval to start the count here and set the clock to running.
+// if (!clockRunning) {
+//   intervalId = setInterval(count, 1000);
+//   clockRunning = true;
 
 
-// function timeUp() {
-//     $("#time-left").append("<h2>Time's Up!</h2>");
-//     console.log("time is up");
-// }
 
-// function reset() {
-//     time = 0;
-//     lap = 1;
-//     $("#laps").empty();
-  
-//     //  TODO: Change the "display" div to "00:00."
-//     $("#display").html("00:30")
-  
-//   }  
+$("#start-button").on("click", start);
+
+
+
+
+function start() {
+    var count = 15;
+    
+    function startTimer() {
+        setTimeout(countDown, 1000);
+    }
+    
+    function timeUp() {
+        $("#timer").text("Time left: " + 0);
+        $("#time-left").append("<h2>Time's Up!</h2>");
+        
+    }
+
+    function countDown() {
+        if (--count === 0) {
+            timeUp();
+        } else {
+            $("#timer").text("Time left: " + count);
+            startTimer();
+        }
+        console.log(count);
+    }
+    $("#timer").text("Time left: " + count);
+    startTimer();
+}
+
+
+
 
 
 
@@ -81,47 +92,47 @@ var questionsArr = [
 
 
 questionsArr.forEach(function (question, questionsIndex) {
-    
+
     var col = $('<div class="col-6">');
     var card = $('<div class="card">');
     var header = $('<div class="card-header">').text(question.Q);
     var name = question.CorrectAnswer;
-  
+
     col.append(card);
     card.append(header);
-   
 
-    question.A.forEach(function (answers,answersIndex) {
+
+    question.A.forEach(function (answers, answersIndex) {
         var span = $('<span>');
-        var radioBtn = $('<input  class="radio" type="radio" name="' + questionsIndex + '" index="'+ answersIndex + '"/>');
-        
-        span.append(radioBtn,answers);
-       
+        var radioBtn = $('<input  class="radio" type="radio" name="' + questionsIndex + '" index="' + answersIndex + '"/>');
+
+        span.append(radioBtn, answers);
+
         card.append(span);
 
-        
+
     });
 
-        
+
 
     // card.append(radioBtn);
     $(".row").append(col);
 });
 
-var userScore =0;
+var userScore = 0;
 var wrong = 0;
 
-$(".radio").on("click", function(){
+$(".radio").on("click", function () {
     var questionsIndex = $(this).attr('name');
     var answersIndex = $(this).attr('index');
- 
-    console.log(questionsIndex,answersIndex);
+
+    console.log(questionsIndex, answersIndex);
     console.log(questionsArr[questionsIndex]);
     var rightAns = questionsArr[questionsIndex].CorrectAnswer;
     // does answersIndex = correct answer value
-    //if true then ++userScore
-   
-    
+
+
+
 
     if (answersIndex == rightAns) {
         userScore++;
@@ -132,7 +143,9 @@ $(".radio").on("click", function(){
     console.log("right" + userScore);
 
     // if (answersIndex = )
-    
+
+    $(".rightA").text("Right Answers: " + userScore);
+    $(".wrongA").text("Wrong Answers: " + wrong);
 
 });
 // var correctAns = question.CorrectAnswer;
@@ -143,11 +156,9 @@ $(".radio").on("click", function(){
 //in div class= "final-page"
 // append the userScore on the page AFTER timer runs out or when user clicks finish.
 //when (timer runs out || click finish button) {}
-var rightA=$(".final-page").append("<div class=rightA>");
-var wrongA=$(".final-page").append("<div class=wrongA>");
+var rightA = $(".final-page").append("<div class=rightA>");
+var wrongA = $(".final-page").append("<div class=wrongA>");
 
-$(".rightA").text("Right Answers: " + userScore);
-$(".wrongA").text("Wrong Answers: " + wrong);
 
 
 // when click start --> hide 
