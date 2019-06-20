@@ -1,12 +1,32 @@
 .jumbotron {
-    text-align: center;
+
     background: rgb(189, 255, 255);
+}
+
+.display-4 {
+    text-align: center;
 }
 
 .col-6 {
     margin-bottom: 40px;
 }
 
-.answer {
-    padding: 5px;
+/* .card {
+    height: 200px;
+}
+
+.card-header {
+    height: 75px;
+} */
+
+span {
+    padding: 10px;
+}
+
+.radio {
+    margin-right: 10px;
+}
+.final-page {
+    border: solid black 2px;
+    text-align: center;
 }

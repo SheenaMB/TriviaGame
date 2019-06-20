@@ -85,9 +85,11 @@ questionsArr.forEach(function (question, questionsIndex) {
     var col = $('<div class="col-6">');
     var card = $('<div class="card">');
     var header = $('<div class="card-header">').text(question.Q);
-    var name = questionsIndex;
+    var name = question.CorrectAnswer;
+  
     col.append(card);
     card.append(header);
+   
 
     question.A.forEach(function (answers,answersIndex) {
         var span = $('<span>');
@@ -97,7 +99,7 @@ questionsArr.forEach(function (question, questionsIndex) {
        
         card.append(span);
 
-        console.log(answers);
+        
     });
 
         
@@ -106,20 +108,50 @@ questionsArr.forEach(function (question, questionsIndex) {
     $(".row").append(col);
 });
 
+var userScore =0;
+var wrong = 0;
+
 $(".radio").on("click", function(){
     var questionsIndex = $(this).attr('name');
     var answersIndex = $(this).attr('index');
-
+ 
     console.log(questionsIndex,answersIndex);
+    console.log(questionsArr[questionsIndex]);
+    var rightAns = questionsArr[questionsIndex].CorrectAnswer;
     // does answersIndex = correct answer value
-    //if yes then ++userScore
+    //if true then ++userScore
+   
+    
+
+    if (answersIndex == rightAns) {
+        userScore++;
+    } else {
+        wrong++;
+    }
+    console.log("wrong" + wrong);
+    console.log("right" + userScore);
+
+    // if (answersIndex = )
+    
 
 });
+// var correctAns = question.CorrectAnswer;
+
+
 
 
 //in div class= "final-page"
+// append the userScore on the page AFTER timer runs out or when user clicks finish.
+//when (timer runs out || click finish button) {}
+var rightA=$(".final-page").append("<div class=rightA>");
+var wrongA=$(".final-page").append("<div class=wrongA>");
 
-var userScore;
+$(".rightA").text("Right Answers: " + userScore);
+$(".wrongA").text("Wrong Answers: " + wrong);
+
+
+// when click start --> hide 
+
 
 
 
