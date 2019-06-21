@@ -30,11 +30,13 @@
 $("#start-button").on("click", start);
 
 
-
-
-
 function start() {
+    userScore = 0;
+    wrong = 0;
+
+    
     $("#firstPage").hide();
+    $("#final-page").hide();
     $("#questions-page").show();
        
 
@@ -46,8 +48,13 @@ function start() {
     
     function timeUp() {
         $("#timer").text("Time left: " + 0);
-        $("#final-page").show();
         $("#time-left").append("<h2>Time's Up!</h2>");
+
+        $(".rightA").text("Right Answers: " + userScore);
+        $(".wrongA").text("Wrong Answers: " + wrong);
+        // $("#questions-page").empty();
+        $("#restart-button").on("click", start);
+    
         
     }
 
@@ -55,7 +62,7 @@ function start() {
         if (--count === 0) {
             $("#questions-page").hide();
             timeUp();
-            // $("#final-page").show();
+            $("#final-page").show();
             
         } else {
             $("#timer").text("Time left: " + count);
@@ -119,10 +126,7 @@ questionsArr.forEach(function (question, questionsIndex) {
 
         card.append(span);
 
-
     });
-
-
 
     // card.append(radioBtn);
     $(".row").append(col);
@@ -153,8 +157,8 @@ $(".radio").on("click", function () {
 
     // if (answersIndex = )
 
-    $(".rightA").text("Right Answers: " + userScore);
-    $(".wrongA").text("Wrong Answers: " + wrong);
+    // $(".rightA").text("Right Answers: " + userScore);
+    // $(".wrongA").text("Wrong Answers: " + wrong);
 
 });
 // var correctAns = question.CorrectAnswer;
@@ -165,12 +169,13 @@ $(".radio").on("click", function () {
 //in div class= "final-page"
 // append the userScore on the page AFTER timer runs out or when user clicks finish.
 //when (timer runs out || click finish button) {}
-var rightA = $(".final-page").append("<div class=rightA>");
-var wrongA = $(".final-page").append("<div class=wrongA>");
+var rightA = $("#final-page").append("<div class='rightA'>");
+var wrongA = $("#final-page").append("<div class='wrongA'>");
 
+// $("#final-page").show();
 
+// }
 
-// when click start --> hide 
 
 
 

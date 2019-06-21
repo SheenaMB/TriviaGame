@@ -11,22 +11,27 @@
     margin-bottom: 40px;
 }
 
-/* .card {
-    height: 200px;
-}
-
-.card-header {
-    height: 75px;
-} */
-
 span {
     padding: 10px;
+}
+#timer {
+    font-size: 24px;
+    text-align: center;
+    color: red;
+    /* border: solid rgb(192, 145, 237) 1px; */
+    margin-bottom: 20px;
+    
 }
 
 .radio {
     margin-right: 10px;
 }
-.final-page {
-    border: solid black 2px;
+#final-page {
+    background: rgb(179, 255, 255);
     text-align: center;
+    padding: 20px;
+}
+
+#restart-button {
+    margin: 10px;
 }
