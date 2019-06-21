@@ -52,7 +52,8 @@ function start() {
 
         $(".rightA").text("Right Answers: " + userScore);
         $(".wrongA").text("Wrong Answers: " + wrong);
-        // $("#questions-page").empty();
+        $(".row").empty();
+        createCards();
         $("#restart-button").on("click", start);
     
         
@@ -106,32 +107,35 @@ var questionsArr = [
 ];
 
 
+function createCards() {
 
-questionsArr.forEach(function (question, questionsIndex) {
+    questionsArr.forEach(function (question, questionsIndex) {
 
-    var col = $('<div class="col-6">');
-    var card = $('<div class="card">');
-    var header = $('<div class="card-header">').text(question.Q);
-    var name = question.CorrectAnswer;
+        var col = $('<div class="col-6">');
+        var card = $('<div class="card">');
+        var header = $('<div class="card-header">').text(question.Q);
+        var name = question.CorrectAnswer;
+    
+        col.append(card);
+        card.append(header);
+    
+    
+        question.A.forEach(function (answers, answersIndex) {
+            var span = $('<span>');
+            var radioBtn = $('<input  class="radio" type="radio" name="' + questionsIndex + '" index="' + answersIndex + '"/>');
+    
+            span.append(radioBtn, answers);
+    
+            card.append(span);
+    
+        });
+    
+        // card.append(radioBtn);
+        $(".row").append(col);
+    });    
+}
 
-    col.append(card);
-    card.append(header);
-
-
-    question.A.forEach(function (answers, answersIndex) {
-        var span = $('<span>');
-        var radioBtn = $('<input  class="radio" type="radio" name="' + questionsIndex + '" index="' + answersIndex + '"/>');
-
-        span.append(radioBtn, answers);
-
-        card.append(span);
-
-    });
-
-    // card.append(radioBtn);
-    $(".row").append(col);
-});
-
+createCards();
 var userScore = 0;
 var wrong = 0;
 
