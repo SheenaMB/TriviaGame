@@ -32,7 +32,12 @@ $("#start-button").on("click", start);
 
 
 
+
 function start() {
+    $("#firstPage").hide();
+    $("#questions-page").show();
+       
+
     var count = 15;
     
     function startTimer() {
@@ -41,13 +46,17 @@ function start() {
     
     function timeUp() {
         $("#timer").text("Time left: " + 0);
+        $("#final-page").show();
         $("#time-left").append("<h2>Time's Up!</h2>");
         
     }
 
     function countDown() {
         if (--count === 0) {
+            $("#questions-page").hide();
             timeUp();
+            // $("#final-page").show();
+            
         } else {
             $("#timer").text("Time left: " + count);
             startTimer();

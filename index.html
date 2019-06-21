@@ -21,30 +21,35 @@
             <h1 class="display-4" id="main-title">Totally Trivial Trivia!</h1>
             <p class="lead">Here's a fun quiz for you!</p>
             <hr class="my-4">
-            <p>Do your best to answer the questions. A timer will count down. Hit start to begin the game! Good luck!
-            </p>
-            <a class="btn btn-primary btn-lg" id="start-button" role="button">Start!</a>
+            <div id='firstPage'>
+                <p>Do your best to answer the questions. A timer will count down. Hit start to begin the game! Good
+                    luck!
+                </p>
+                <a class="btn btn-primary btn-lg" id="start-button" role="button">Start!</a>
+            </div>
         </div>
 
-        <div class="questions-page">
-            <div class="jumbotron">
-                <h1 class="display-4">Totally Trivial Trivia!</h1>
-                <hr class="my-4">
-                <div id="timer"></div>
-            </div>
-            
+        <div id="questions-page" style='display:none'>
+            <!-- <div class="jumbotron">
+                    <h1 class="display-4">Totally Trivial Trivia!</h1>
+                    <hr class="my-4"> -->
+            <div id="timer"></div>
             <div class="questions-container">
                 <div class="row"></div>
             </div>
+        </div>
+
+        <div id="final-page" style="display:none">
+            <!-- <div class="jumbotron">
+                            <h1 class="display-4">Totally Trivial Trivia!</h1>
+                            <hr class="my-4"> -->
 
         </div>
-        <div class="final-page">
-            <div class="jumbotron">
-                <h1 class="display-4">Totally Trivial Trivia!</h1>
-                <hr class="my-4">
 
-            </div>
-        </div>
+    </div>
+
+    </div>
+
     </div>
 
     <!-- Optional JavaScript -->
